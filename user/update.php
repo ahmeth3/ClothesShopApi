@@ -19,7 +19,7 @@ if (isset($postdata) && !empty($postdata)) {
     $password = mysqli_real_escape_string($con, trim($request->data->password));
 
     // Update.
-    $sql = "UPDATE `user` SET `email`='$email',`password`='$password' WHERE `id` = '{$id}' LIMIT 1";
+    $sql = "UPDATE `users` SET `email`='$email',`password`='$password' WHERE `id` = '{$id}' LIMIT 1";
 
     if (mysqli_query($con, $sql)) {
         http_response_code(200);

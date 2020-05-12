@@ -20,7 +20,7 @@ if (isset($postdata) && !empty($postdata)) {
 
 
     // Store.
-    $sql = "INSERT INTO `user`(`id`,`email`,`password`) VALUES (null,'{$email}','{$password}')";
+    $sql = "INSERT INTO `users`(`id`,`email`,`password`) VALUES (null,'{$email}','{$password}')";
 
     if (mysqli_query($con, $sql)) {
         http_response_code(201);

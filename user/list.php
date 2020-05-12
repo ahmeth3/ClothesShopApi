@@ -3,7 +3,7 @@
 require '../connect.php';
 
 $users = [];
-$sql = "SELECT id, email, password FROM user";
+$sql = "SELECT id, email, password FROM users";
 
 if ($result = mysqli_query($con, $sql)) {
     $cr = 0;
