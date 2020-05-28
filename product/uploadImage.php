@@ -3,7 +3,7 @@
 class UploadImage
 {
     public $image;
-    public $imageUrl = '';
+    public $image_name = '';
 
     function __construct($img)
     {
@@ -13,7 +13,6 @@ class UploadImage
     function uploadImage()
     {
         $upload_dir = 'images/';
-        $server_url = 'http://localhost/ClothesShopApi';
 
         $avatar_name = $_FILES["avatar"]["name"];
         $avatar_tmp_name = $_FILES["avatar"]["tmp_name"];
@@ -23,7 +22,7 @@ class UploadImage
         $upload_name = $upload_dir . strtolower($random_name);
         $upload_name = preg_replace('/\s+/', '-', $upload_name);
 
-        $this->imageUrl = $server_url . "/" . $upload_name;
+        $this->image_name = $random_name;
 
         if (move_uploaded_file($avatar_tmp_name, $upload_name))
             return true;

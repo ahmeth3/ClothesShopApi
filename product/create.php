@@ -8,14 +8,14 @@ require '../connect.php';
 
 $response = array();
 $imageUpload = 1; //imageUpload error handler
-$imageUrl;
+$image_name;
 
 if ($_FILES['avatar']) {
     $upload = new UploadImage($_FILES['avatar']);
 
     if ($upload->uploadImage()) {
         $imageUpload = 1;
-        $imageUrl = $upload->imageUrl;
+        $image_name = $upload->image_name;
         $response = array(
             "status" => "success",
             "error" => false,
@@ -60,11 +60,11 @@ if ($imageUpload === 1) {
         $gender = mysqli_real_escape_string($con, trim($data->gender));
         $color = mysqli_real_escape_string($con, trim($data->color));
         $size = mysqli_real_escape_string($con, trim($data->size));
-        $imageUrl = mysqli_real_escape_string($con, trim($imageUrl));
+        $imageUrl = mysqli_real_escape_string($con, trim($image_name));
 
 
         // Store.
-        $sql = "INSERT INTO `products`(`name`,`price`,`category`,`gender`,`color`,`size`, `picUrl`) VALUES ('{$name}','{$price}', '{$category}','{$gender}', '{$color}','{$size}', '{$imageUrl}')";
+        $sql = "INSERT INTO `products`(`name`,`price`,`category`,`gender`,`color`,`size`, `picName`) VALUES ('{$name}','{$price}', '{$category}','{$gender}', '{$color}','{$size}', '{$imageUrl}')";
 
         if (mysqli_query($con, $sql)) {
             http_response_code(201);
