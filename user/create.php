@@ -8,7 +8,6 @@ if (isset($postdata) && !empty($postdata)) {
     // Extract the data.
     $request = json_decode($postdata);
 
-
     // Validate.
     if (trim($request->data->email) === '' || trim($request->data->password) === '') {
         return http_response_code(400);
@@ -17,7 +16,6 @@ if (isset($postdata) && !empty($postdata)) {
     // Sanitize.
     $email = mysqli_real_escape_string($con, trim($request->data->email));
     $password = mysqli_real_escape_string($con, trim($request->data->password));
-
 
     // Store.
     $sql = "INSERT INTO `users`(`id`,`email`,`password`) VALUES (null,'{$email}','{$password}')";

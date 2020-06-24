@@ -49,6 +49,7 @@ if ($imageUpload === 1) {
             trim($data->name) === '' || !ctype_digit($data->price) ||
             trim($data->category) === '' || trim($data->gender) === ''
             || trim($data->color) === '' || trim($data->size) === ''
+            || trim($data->caption) === '' || trim($data->composition) === ''
         ) {
             return http_response_code(400);
         }
@@ -60,11 +61,13 @@ if ($imageUpload === 1) {
         $gender = mysqli_real_escape_string($con, trim($data->gender));
         $color = mysqli_real_escape_string($con, trim($data->color));
         $size = mysqli_real_escape_string($con, trim($data->size));
+        $caption = mysqli_real_escape_string($con, trim($data->caption));
+        $composition = mysqli_real_escape_string($con, trim($data->composition));
         $imageUrl = mysqli_real_escape_string($con, trim($image_name));
 
 
         // Store.
-        $sql = "INSERT INTO `products`(`name`,`price`,`category`,`gender`,`color`,`size`, `picName`) VALUES ('{$name}','{$price}', '{$category}','{$gender}', '{$color}','{$size}', '{$imageUrl}')";
+        $sql = "INSERT INTO `products`(`name`,`price`,`category`,`gender`,`color`,`size`, `caption`, `composition`,`picName`) VALUES ('{$name}','{$price}', '{$category}','{$gender}', '{$color}','{$size}', '{$caption}','{$composition}','{$imageUrl}')";
 
         if (mysqli_query($con, $sql)) {
             http_response_code(201);
@@ -75,6 +78,8 @@ if ($imageUpload === 1) {
                 'gender' => $gender,
                 'color' => $color,
                 'size' => $size,
+                'caption' => $caption,
+                'composition' => $composition,
                 'id'    => mysqli_insert_id($con)
             ];
             echo json_encode(['data' => $product]);
@@ -85,4 +90,3 @@ if ($imageUpload === 1) {
 } else {
     echo json_encode($response);
 }
-

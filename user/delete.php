@@ -7,7 +7,7 @@ $id = ($_GET['id'] !== null && (int) $_GET['id'] > 0) ? mysqli_real_escape_strin
 
 if (!$id) {
   return http_response_code(400);
-}
+} 
 
 // Delete.
 $sql = "DELETE FROM `users` WHERE `id` ='{$id}' LIMIT 1";

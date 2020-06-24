@@ -15,6 +15,8 @@ if ($result = mysqli_query($con, $sql)) {
         $products[$cr]['gender'] = $row['gender'];
         $products[$cr]['color'] = $row['color'];
         $products[$cr]['size'] = $row['size'];
+        $products[$cr]['caption'] = $row['caption'];
+        $products[$cr]['composition'] = $row['composition'];
         $products[$cr]['picUrl'] = 'http://localhost/ClothesShopApi/product/images/' . $row['picName'];
 
         $cr++;
