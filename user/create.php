@@ -17,14 +17,16 @@ if (isset($postdata) && !empty($postdata)) {
     $email = mysqli_real_escape_string($con, trim($request->data->email));
     $password = mysqli_real_escape_string($con, trim($request->data->password));
 
+    $password_hash = password_hash($password, PASSWORD_BCRYPT);
+
     // Store.
-    $sql = "INSERT INTO `users`(`id`,`email`,`password`) VALUES (null,'{$email}','{$password}')";
+    $sql = "INSERT INTO `users`(`id`,`email`,`password`) VALUES (null,'{$email}','{$password_hash}')";
 
     if (mysqli_query($con, $sql)) {
         http_response_code(201);
         $user = [
             'email' => $email,
-            'password' => $password,
+            'password' => $password_hash,
             'id'    => mysqli_insert_id($con)
         ];
         echo json_encode(['data' => $user]);
