@@ -23,15 +23,14 @@ if ($jwt) {
 
         $decoded = JWT::decode($jwt, $secret_key, array('HS256'));
 
-        // // Access is granted. Add code of the operation here 
-        // $data = (array) $decoded;
+        // Access is granted. Add code of the operation here 
+        $data = (array) $decoded;
 
-        // $userData = (array) $data['data'];
-
-        // echo $userData['id'];
+        $userData = (array) $data['data'];
 
         echo json_encode(array(
-            "message" => "Access granted:"
+            "message" => "Access granted:",
+            "id" => $userData['id']
         ));
     } catch (Exception $e) {
 
