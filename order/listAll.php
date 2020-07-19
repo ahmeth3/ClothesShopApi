@@ -35,7 +35,7 @@ if (isset($postdata) && !empty($postdata)) {
             $id =  $userData['id'];
 
             $orders = [];
-            $sql = "SELECT * FROM orders WHERE `buyerId` = '{$id}'";
+            $sql = "SELECT * FROM orders";
 
             if ($result = mysqli_query($con, $sql)) {
                 $cr = 0;

@@ -40,7 +40,7 @@ if (isset($postdata) && !empty($postdata)) {
 
             // Validate.
             if (
-                trim($request->data->price) === '' ||
+                trim($request->data->price) === '' || trim($request->data->orderedProducts) === '' ||
                 trim($request->data->name) === '' || trim($request->data->surname) === '' ||
                 trim($request->data->phone) === '' || trim($request->data->address) === '' ||
                 trim($request->data->city) === '' || trim($request->data->zipCode) === '' ||
@@ -53,6 +53,7 @@ if (isset($postdata) && !empty($postdata)) {
             $status = mysqli_real_escape_string($con, trim($request->data->status));
             $price = mysqli_real_escape_string($con, trim($request->data->price));
             $date = mysqli_real_escape_string($con, trim($request->data->date));
+            $orderedProducts = mysqli_real_escape_string($con, trim($request->data->orderedProducts));
             $name = mysqli_real_escape_string($con, trim($request->data->name));
             $surname = mysqli_real_escape_string($con, trim($request->data->surname));
             $phone = mysqli_real_escape_string($con, trim($request->data->phone));
@@ -62,7 +63,7 @@ if (isset($postdata) && !empty($postdata)) {
             $country = mysqli_real_escape_string($con, trim($request->data->country));
 
             // Store.
-            $sql = "INSERT INTO `orders`(`buyerId`,`status`,`price`, `date`, `name`, `surname`, `phone`, `address`, `city`, `zipCode`, `country`) VALUES ('{$id}','{$status}','{$price}','{$date}','{$name}','{$surname}','{$phone}','{$address}','{$city}','{$zipCode}','{$country}')";
+            $sql = "INSERT INTO `orders`(`buyerId`,`status`,`price`, `date`, `orderedProducts`,`name`, `surname`, `phone`, `address`, `city`, `zipCode`, `country`) VALUES ('{$id}','{$status}','{$price}','{$date}','{$orderedProducts}','{$name}','{$surname}','{$phone}','{$address}','{$city}','{$zipCode}','{$country}')";
 
             if (mysqli_query($con, $sql)) {
                 http_response_code(201);
