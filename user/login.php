@@ -46,7 +46,7 @@ if (isset($postdata) && !empty($postdata)) {
             $audience_claim = "Idk";
             $issuedat_claim = time(); // issued at
             $notbefore_claim = $issuedat_claim + 1; //not before in seconds
-            $expire_claim = $issuedat_claim + 3600; // expire time in seconds
+            $expire_claim = $issuedat_claim + 3600 * 24; // expire time in seconds
             $token = array(
                 "iss" => $issuer_claim,
                 "aud" => $audience_claim,
