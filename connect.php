@@ -1,10 +1,10 @@
 <?php
 
 // db credentials
-define('DB_HOST', 'localhost');
-define('DB_USER', 'root');
-define('DB_PASS', '');
-define('DB_NAME', 'clothesshop');
+define('DB_HOST', 'nr84dudlpkazpylz.chr7pe7iynqr.eu-west-1.rds.amazonaws.com');
+define('DB_USER', 'nbajl4e8ci1lzk1u');
+define('DB_PASS', 'khqhw7to4mppoycm');
+define('DB_NAME', 'm7lxkixjjjeifscr');
 
 // Connect with the database.
 function connect()
