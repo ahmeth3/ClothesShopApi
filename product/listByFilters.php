@@ -60,7 +60,7 @@ if (isset($postdata) && !empty($postdata)) {
             $products[$cr]['size'] = $row['size'];
             $products[$cr]['caption'] = $row['caption'];
             $products[$cr]['composition'] = $row['composition'];
-            $products[$cr]['picUrl'] = 'https://ep-web-shop.herokuapp.com/product/images/' . $row['picName'];
+            $products[$cr]['picUrl'] = 'http://localhost/ClothesShopApi/product/images/' . $row['picName'];
 
             $cr++;
         }
